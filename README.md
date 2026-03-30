@@ -22,6 +22,27 @@ Your final app should:
 - Display the plan clearly (and ideally explain the reasoning)
 - Include tests for the most important scheduling behaviors
 
+## Testing PawPal+
+
+Run the full test suite with:
+
+```bash
+python -m pytest
+```
+
+The suite covers 27 tests across five areas:
+
+| Area | What is tested |
+|---|---|
+| **Task** | `mark_complete()` changes status; recurring tasks are NOT permanently completed; `is_due_today()` respects weekday recurrence and `next_due_date` |
+| **Pet** | Task count increases on `add_task()`; completed tasks are excluded from `get_tasks_due_today()` |
+| **Owner** | Pet back-reference is set on `add_pet()`; `set_available_time()` updates the budget |
+| **Scheduler — scheduling** | Time budget is never exceeded; high-priority tasks are chosen over low; skipped tasks are recorded; empty-pet and all-tasks-exceed-budget edge cases |
+| **Scheduler — algorithms** | `sort_by_time()` returns chronological order with untimed tasks last; `filter_tasks()` by type and status; recurring daily tasks reschedule to tomorrow via `timedelta`; conflict detection catches overlapping windows but not non-overlapping ones; untimed tasks never trigger conflicts |
+
+**Confidence level: ★★★★☆ (4/5)**
+The scheduler's core logic — priority ordering, time budget enforcement, recurring rescheduling, and conflict detection — is fully covered. The main untested area is the Streamlit UI layer (`app.py`) and integration between multiple pets sharing a single owner's time budget simultaneously.
+
 ## Getting started
 
 ### Setup
