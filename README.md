@@ -16,7 +16,13 @@
 
 ## 📸 Demo
 
-> Add a screenshot here after launching the app. Use `streamlit run app.py` to start it.
+**Pets tab** — add pets with health notes; see how many tasks are due today at a glance.
+
+![PawPal Pets Tab](screenshots/1.png)
+
+**Tasks tab** — add tasks with priority, preferred time, and recurrence; filter by type or status.
+
+![PawPal Tasks Tab](screenshots/3.png)
 
 ## Scenario
 
